@@ -1,6 +1,17 @@
-import { extendTheme, withDefaultColorScheme } from '@chakra-ui/react';
+import {
+  extendTheme,
+  withDefaultColorScheme,
+  theme as ChakraTheme,
+} from '@chakra-ui/react';
+
+import '@fontsource/dancing-script';
+import '@fontsource/old-standard-tt';
+import '@fontsource/orbitron';
+import '@fontsource/open-sans';
+import '@fontsource/raleway';
 
 export const theme = extendTheme({
+  ...ChakraTheme,
   styles: {
     global: {
       body: {
@@ -12,17 +23,11 @@ export const theme = extendTheme({
   fonts: {
     body: 'Lato, sans-serif',
     heading: 'Forum, sans-serif',
-    mono: 'Menlo, monospace',
-    fontOrbitron: 'orbitron',
+    // mono: 'Menlo, monospace',
+    mono: 'old-standard-tt',
+    myFont: 'dancing-script',
   },
-  textStyles: {
-    primary: {
-      fontFamily: 'orbitron',
-    },
-    secondary: {
-      fontFaimly: 'old-standard-tt',
-    },
-  },
+
   colors: {
     olive: {
       50: '#eff5e9',

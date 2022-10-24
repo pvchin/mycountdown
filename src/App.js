@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import addDays from 'date-fns/addDays';
+import dayjs from 'dayjs';
 import {
   ChakraProvider,
+  Button,
   Center,
   Box,
   Text,
@@ -10,30 +13,49 @@ import {
   Select,
   HStack,
   VStack,
-  Code,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
 } from '@chakra-ui/react';
-import { theme } from './theme';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import Font from "react-font"
-import ShowCounter1 from './components/ShowCounterExample1';
-import ShowCounter2 from './components/ShowCounterExample2';
-import ShowCounter3 from './components/ShowCounterExample3';
-import ShowCounter4 from './components/ShowCounterExample4';
-import ShowCounter5 from './components/ShowCounterExample5';
-import ShowCounter6 from './components/ShowCounterExample6';
-import ShowCounter7 from './components/ShowCounterExample7';
-import ShowCounter8 from './components/ShowCounterExample8';
-import ShowCounter9 from './components/ShowCounterExample9';
-import ShowCounter10 from './components/ShowCounterExample10';
+import '@fontsource/dancing-script';
+import '@fontsource/old-standard-tt';
+import '@fontsource/orbitron/400.css';
+import '@fontsource/open-sans/700.css';
+import '@fontsource/raleway/400.css';
 
-const calculateTimeLeft = () => {
-  const difference = +new Date('2022-10-27T23:59:00') - +new Date();
+import Appbanner from './components/Appbanner';
+import ShowCounter1 from './components/ShowCounterTemplate1';
+import ShowCounter2 from './components/ShowCounterTemplate2.js';
+import ShowCounter3 from './components/ShowCounterTemplate3';
+import ShowCounter4 from './components/ShowCounterTemplate4';
+import ShowCounter5 from './components/ShowCounterTemplate5';
+import ShowCounter6 from './components/ShowCounterTemplate6';
+import ShowCounter7 from './components/ShowCounterTemplate7';
+import ShowCounter8 from './components/ShowCounterTemplate8';
+import ShowCounter9 from './components/ShowCounterTemplate9';
+import ShowCounter10 from './components/ShowCounterTemplate10';
+import ShowCounter11 from './components/ShowCounterTemplate11';
+import ShowCounter12 from './components/ShowCounterTemplate12';
+import ShowCounter13 from './components/ShowCounterTemplate13';
+import ShowCounter14 from './components/ShowCounterTemplate14';
+import ShowCounter15 from './components/ShowCounterTemplate15';
+import TimeUpTemplate from "./components/TImeUpTemplate"
+
+const zeroPad = (num, places) => String(num).padStart(places, '0');
+
+const calculateTimeLeft = targetDateString => {
+  const difference = +new Date(targetDateString) - +new Date();
 
   let timeLeft = {};
 
   if (difference > 0) {
     timeLeft = {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)) - 1,
       hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
       minutes: Math.floor((difference / 1000 / 60) % 60),
       seconds: Math.floor((difference / 1000) % 60),
@@ -46,44 +68,51 @@ const calculateTimeLeft = () => {
 function App() {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   const [selectedoption, setSelectedOption] = useState('1');
+  const tDate = dayjs().add(18, 'day').format('YYYY-MM-DD');
+  const [deadlinedate, setDeadlineDate] = useState(tDate);
+  const {
+    isOpen: isSettingOpen,
+    onOpen: onSettingOpen,
+    onClose: onSettingClose,
+  } = useDisclosure();
+  console.log('Date', dayjs().add(1, 'day').format('YYYY-MM-DD'));
+  console.log('tdate', typeof tDate, tDate);
+  console.log('deadline', deadlinedate);
+
+  const getTimeLeft = tDate => {
+    const targetDate = dayjs(tDate).$d;
+    const targetDateString = `${targetDate.getFullYear(targetDate)}-${
+      targetDate.getMonth(targetDate) + 1
+    }-${zeroPad(targetDate.getDate(targetDate), 2)}T23:59:00`;
+    setTimeLeft(calculateTimeLeft(targetDateString));
+  };
+
+  const handleOpenSetting = () => {
+    onSettingOpen();
+  };
+
+  const handleSaveSetting = e => {
+    setDeadlineDate(e.target.value);
+  };
 
   useEffect(() => {
     setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
+      getTimeLeft(deadlinedate);
     });
   });
 
   return (
-    <ChakraProvider theme={theme}>
-      <Font family="Old Standard TT" onLoad />
+    <>
+      <Appbanner
+        selectedoption={selectedoption}
+        setSelectedOption={setSelectedOption}
+        deadlinedate={deadlinedate}
+        setDeadlineDate={setDeadlineDate}
+        handleOpenSetting={handleOpenSetting}
+      />
       <Box textAlign="center" fontSize="xl">
         <Grid p={5}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack>
-            <Center>
-              {/* <Text as="b" fontSize="sm">
-                Layout
-              </Text> */}
-              <Select
-                name="item_location"
-                value={selectedoption}
-                //width="50%"
-                onChange={e => setSelectedOption(e.target.value)}
-                borderColor="gray.400"
-              >
-                <option value="1">Layout 1</option>
-                <option value="2">Layout 2</option>
-                <option value="3">Layout 3</option>
-                <option value="4">Layout 4</option>
-                <option value="5">Layout 5</option>
-                <option value="6">Layout 6</option>
-                <option value="7">Layout 7</option>
-                <option value="8">Layout 8</option>
-                <option value="9">Layout 9</option>
-                <option value="10">Layout 10</option>
-              </Select>
-            </Center>
-          </VStack>
+          {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
           <VStack spacing={8} p={5}>
             <Box>
               {timeLeft.hours || timeLeft.minutes || timeLeft.seconds ? (
@@ -181,25 +210,90 @@ function App() {
                           seconds={timeLeft.seconds}
                         />
                       );
+                    case '11':
+                      return (
+                        <ShowCounter11
+                          days={timeLeft.days}
+                          hours={timeLeft.hours}
+                          minutes={timeLeft.minutes}
+                          seconds={timeLeft.seconds}
+                        />
+                      );
+                    case '12':
+                      return (
+                        <ShowCounter12
+                          days={timeLeft.days}
+                          hours={timeLeft.hours}
+                          minutes={timeLeft.minutes}
+                          seconds={timeLeft.seconds}
+                        />
+                      );
+                    case '13':
+                      return (
+                        <ShowCounter13
+                          days={timeLeft.days}
+                          hours={timeLeft.hours}
+                          minutes={timeLeft.minutes}
+                          seconds={timeLeft.seconds}
+                        />
+                      );
+                    case '14':
+                      return (
+                        <ShowCounter14
+                          days={timeLeft.days}
+                          hours={timeLeft.hours}
+                          minutes={timeLeft.minutes}
+                          seconds={timeLeft.seconds}
+                        />
+                      );
+                    case '15':
+                      return (
+                        <ShowCounter15
+                          days={timeLeft.days}
+                          hours={timeLeft.hours}
+                          minutes={timeLeft.minutes}
+                          seconds={timeLeft.seconds}
+                        />
+                      );
                     default:
                       return null;
                   }
                 })()
               ) : (
-                // <ShowCounter
-                //   days={timeLeft.days}
-                //   hours={timeLeft.hours}
-                //   minutes={timeLeft.minutes}
-                //   seconds={timeLeft.seconds}
-                // />
+                <TimeUpTemplate
+                   deadlinedate={deadlinedate}
+                />
 
-                <p>Time is up 🔥</p>
+                //<p>Time is up 🔥</p>
               )}
             </Box>
           </VStack>
         </Grid>
+        <Modal isOpen={isSettingOpen} onClose={onSettingClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Deadline Date Settings</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <Input
+                placeholder="Select Deadline Date"
+                size="md"
+                type="date"
+                defaultValue={deadlinedate}
+                value={deadlinedate}
+                onChange={handleSaveSetting}
+              />
+            </ModalBody>
+
+            <ModalFooter>
+              <Button colorScheme="blue" mr={3} onClick={onSettingClose}>
+                Close
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </Box>
-    </ChakraProvider>
+    </>
   );
 }
 
