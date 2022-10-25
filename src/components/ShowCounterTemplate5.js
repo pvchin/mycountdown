@@ -1,20 +1,13 @@
 import React from 'react';
 import { MovingComponent } from 'react-moving-text';
 import {
-  ChakraProvider,
   Box,
   Center,
-  Divider,
   Heading,
   Image,
-  Text,
   Grid,
   GridItem,
-  Link,
-  HStack,
   VStack,
-  Code,
-  theme,
 } from '@chakra-ui/react';
 import Img1 from '../assets/template5/background.png';
 import pic1 from '../assets/template5/pic1.png';

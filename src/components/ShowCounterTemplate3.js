@@ -1,7 +1,6 @@
 import React from 'react';
 import { MovingComponent } from 'react-moving-text';
 import {
-  ChakraProvider,
   Box,
   Center,
   Divider,
@@ -10,11 +9,8 @@ import {
   Text,
   Grid,
   GridItem,
-  Link,
   HStack,
   VStack,
-  Code,
-  theme,
 } from '@chakra-ui/react';
 import Img1 from '../assets/template3/background.png';
 import Img2 from '../assets/template3/comingsoon.png';
@@ -78,7 +74,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
           <Image src={Img2} w={450} />
         </MovingComponent>
       </Box>
-      <HStack top={590} left={300} position="absolute">
+      <HStack top={590} left={0} position="relative">
         <Divider />
         <Grid templateColumns="repeat(11, 1fr)" gap={8}>
           <GridItem colSpan={2}>

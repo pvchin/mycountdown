@@ -1,20 +1,14 @@
 import React from 'react';
 import { MovingComponent } from 'react-moving-text';
 import {
-  ChakraProvider,
   Box,
   Center,
-  Container,
   Heading,
   Image,
-  Text,
   Grid,
   GridItem,
-  Link,
   HStack,
   VStack,
-  Code,
-  theme,
 } from '@chakra-ui/react';
 import Img1 from '../assets/template1/background.png';
 import Img2 from '../assets/template1/lamp.png';
@@ -29,7 +23,9 @@ const DateTimeDisplay = ({ value, type, isDanger }) => {
             {value}
           </Heading>
 
-          <Heading size="md" color="white">{type}</Heading>
+          <Heading size="md" color="white">
+            {type}
+          </Heading>
         </VStack>
       </Center>
     </Box>

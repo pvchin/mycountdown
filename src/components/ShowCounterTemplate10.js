@@ -1,27 +1,20 @@
 import React from 'react';
 import { MovingComponent } from 'react-moving-text';
 import {
-  ChakraProvider,
   Box,
   Center,
-  Divider,
   Heading,
   Image,
-  Text,
   Grid,
   GridItem,
-  Link,
   HStack,
   VStack,
-  Code,
-  theme,
 } from '@chakra-ui/react';
 
 import Img1 from '../assets/template10/background10.png';
 import Img2 from '../assets/template10/comingsoon.png';
 import Img3 from '../assets/template10/splash.png';
 import Img4 from '../assets/template10/trump.png';
-
 
 const DateTimeDisplay = ({ value, type, isDanger }) => {
   return (
@@ -38,7 +31,7 @@ const DateTimeDisplay = ({ value, type, isDanger }) => {
               {value}
             </Heading>
           </Box>
-          {/* <Divider px={2} width="full"/> */}
+
           <Heading size="md" color="black">
             {type}
           </Heading>
@@ -96,15 +89,11 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
           <GridItem colSpan={2}>
             <DateTimeDisplay value={days} type={'DAYS'} isDanger={days <= 3} />
           </GridItem>
-          {/* <GridItem colSpan={1} pt={3}>
-            <Heading color="black">:</Heading>
-          </GridItem> */}
+
           <GridItem colSpan={2}>
             <DateTimeDisplay value={hours} type={'HOURS'} isDanger={false} />
           </GridItem>
-          {/* <GridItem colSpan={1} pt={3}>
-            <Heading color="black">:</Heading>
-          </GridItem> */}
+
           <GridItem colSpan={2}>
             <DateTimeDisplay
               value={minutes}
@@ -112,9 +101,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
               isDanger={false}
             />
           </GridItem>
-          {/* <GridItem colSpan={1} pt={3}>
-            <Heading color="black">:</Heading>
-          </GridItem> */}
+
           <GridItem colSpan={2}>
             <DateTimeDisplay
               value={seconds}

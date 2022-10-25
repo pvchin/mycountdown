@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import addDays from 'date-fns/addDays';
 import dayjs from 'dayjs';
 import {
-  ChakraProvider,
   Button,
-  Center,
   Box,
-  Text,
   Grid,
-  GridItem,
   Input,
-  Select,
-  HStack,
   VStack,
   Modal,
   ModalOverlay,
@@ -44,7 +37,7 @@ import ShowCounter12 from './components/ShowCounterTemplate12';
 import ShowCounter13 from './components/ShowCounterTemplate13';
 import ShowCounter14 from './components/ShowCounterTemplate14';
 import ShowCounter15 from './components/ShowCounterTemplate15';
-import TimeUpTemplate from "./components/TImeUpTemplate"
+import TimeUpTemplate from './components/TImeUpTemplate';
 
 const zeroPad = (num, places) => String(num).padStart(places, '0');
 
@@ -260,9 +253,7 @@ function App() {
                   }
                 })()
               ) : (
-                <TimeUpTemplate
-                   deadlinedate={deadlinedate}
-                />
+                <TimeUpTemplate deadlinedate={deadlinedate} />
 
                 //<p>Time is up 🔥</p>
               )}

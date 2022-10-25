@@ -1,25 +1,18 @@
 import React from 'react';
 import { MovingComponent } from 'react-moving-text';
 import {
-  ChakraProvider,
   Box,
   Center,
-  Divider,
   Heading,
   Image,
-  Text,
   Grid,
   GridItem,
-  Link,
   HStack,
   VStack,
-  Code,
-  theme,
 } from '@chakra-ui/react';
 
 import Img1 from '../assets/template12/background.png';
 import Img2 from '../assets/template12/comingsoon.png';
-
 
 const DateTimeDisplay = ({ value, type, isDanger }) => {
   return (
@@ -36,7 +29,7 @@ const DateTimeDisplay = ({ value, type, isDanger }) => {
               {value}
             </Heading>
           </Box>
-          {/* <Divider px={2} width="full"/> */}
+
           <Heading size="md" color="black">
             {type}
           </Heading>
@@ -70,7 +63,9 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
         </MovingComponent>
       </Box>
       <Box position="absolute" top="600">
-        <Heading color="yellow" fontFamily="serif">STAY TUNED</Heading>
+        <Heading color="yellow" fontFamily="serif">
+          STAY TUNED
+        </Heading>
       </Box>
       <HStack top={780} left={300} position="absolute">
         <Grid templateColumns="repeat(11, 1fr)" gap={5}>
@@ -80,15 +75,11 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
           <GridItem colSpan={2}>
             <DateTimeDisplay value={days} type={'DAYS'} isDanger={days <= 3} />
           </GridItem>
-          {/* <GridItem colSpan={1} pt={3}>
-            <Heading color="black">:</Heading>
-          </GridItem> */}
+
           <GridItem colSpan={2}>
             <DateTimeDisplay value={hours} type={'HOURS'} isDanger={false} />
           </GridItem>
-          {/* <GridItem colSpan={1} pt={3}>
-            <Heading color="black">:</Heading>
-          </GridItem> */}
+
           <GridItem colSpan={2}>
             <DateTimeDisplay
               value={minutes}
@@ -96,9 +87,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
               isDanger={false}
             />
           </GridItem>
-          {/* <GridItem colSpan={1} pt={3}>
-            <Heading color="black">:</Heading>
-          </GridItem> */}
+
           <GridItem colSpan={2}>
             <DateTimeDisplay
               value={seconds}

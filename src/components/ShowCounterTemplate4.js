@@ -1,20 +1,14 @@
 import React from 'react';
 import { MovingComponent } from 'react-moving-text';
 import {
-  ChakraProvider,
   Box,
   Center,
-  Divider,
   Heading,
   Image,
-  Text,
   Grid,
   GridItem,
-  Link,
   HStack,
   VStack,
-  Code,
-  theme,
 } from '@chakra-ui/react';
 import Img1 from '../assets/template4/background.png';
 import Img2 from '../assets/template4/shading.png';
@@ -31,11 +25,13 @@ const DateTimeDisplay = ({ value, type, isDanger }) => {
             border="5px solid orange"
             borderRadius={100}
           >
-            <Heading fontSize={48}  pt={2} fontFamily="serif" color="orange">
+            <Heading fontSize={48} pt={2} fontFamily="serif" color="orange">
               {value}
             </Heading>
           </Box>
-          <Heading size="md" color="orange">{type}</Heading>
+          <Heading size="md" color="orange">
+            {type}
+          </Heading>
         </VStack>
       </Center>
     </Box>
@@ -46,7 +42,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
   return (
     <VStack backgroundImage={Img1} backgroundSize="cover" minW="850" minH="800">
       <Box position="absolute" top="200" left="380">
-         <MovingComponent
+        <MovingComponent
           type="fadeOut"
           duration="1000ms"
           delay="0s"
@@ -55,8 +51,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
           iteration="5"
           fillMode="none"
         >
-
-        <Image src={Img2} w={650} opacity={0.3} />
+          <Image src={Img2} w={650} opacity={0.3} />
         </MovingComponent>
       </Box>
       <Box position="absolute" top="240" left="500">

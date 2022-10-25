@@ -4,17 +4,12 @@ import {
   Box,
   Center,
   Heading,
-  Image,
-  Text,
   Grid,
   GridItem,
-  Link,
   HStack,
   VStack,
-  Code,
-  theme,
 } from '@chakra-ui/react';
-//import DateTimeDisplay from './DateTimeDisplay';
+
 import Img1 from '../assets/template2/background.jpg';
 
 const DateTimeDisplay = ({ value, type, isDanger }) => {

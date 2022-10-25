@@ -1,53 +1,13 @@
 import React from 'react';
 import { MovingComponent } from 'react-moving-text';
-import {
-  ChakraProvider,
-  Box,
-  Center,
-  Divider,
-  Heading,
-  Image,
-  Text,
-  Grid,
-  GridItem,
-  Link,
-  HStack,
-  VStack,
-  Code,
-  theme,
-} from '@chakra-ui/react';
+import { Box, Heading, Image, HStack, VStack } from '@chakra-ui/react';
 
 import Img1 from '../assets/timeuptemplate/background.png';
 import Pic1 from '../assets/timeuptemplate/lights.png';
 
-const DateTimeDisplay = ({ value, type, isDanger }) => {
-  return (
-    <Box>
-      <Center>
-        <VStack>
-          <Box
-            width={100}
-            height={70}
-            border="5px solid white"
-            borderRadius={10}
-          >
-            <Heading fontSize={38} pt={3} color="white" > 
-              {value}
-            </Heading>
-          </Box>
-          {/* <Divider px={2} width="full"/> */}
-          <Heading size="md" color="white">
-            {type}
-          </Heading>
-        </VStack>
-      </Center>
-    </Box>
-  );
-};
-
 const ShowCounter = ({ deadlinedate }) => {
-  const Letter1 = ['T', 'I', 'M', 'E',"'",'S',' ','U','P','!'];
-  const Letter2 = ['W', 'E','L','C','O','M','E'];
+  const Letter1 = ['T', 'I', 'M', 'E', "'", 'S', ' ', 'U', 'P', '!'];
+  const Letter2 = ['W', 'E', 'L', 'C', 'O', 'M', 'E'];
 
   return (
     <VStack
@@ -89,9 +49,6 @@ const ShowCounter = ({ deadlinedate }) => {
               </Heading>
             </MovingComponent>
           ))}
-          {/* <Heading color="white" fontSize={82}>
-          COMING
-        </Heading> */}
         </HStack>
       </Box>
 
@@ -113,13 +70,9 @@ const ShowCounter = ({ deadlinedate }) => {
               </Heading>
             </MovingComponent>
           ))}
-          {/* <Heading color="white" fontFamily="serif" fontSize={82}>
-          SOON
-        </Heading> */}
         </HStack>
       </Box>
 
-    
       <Box position="absolute" top="480">
         <MovingComponent
           type="zoomOut"
@@ -143,7 +96,9 @@ const ShowCounter = ({ deadlinedate }) => {
           iteration="15"
           fillMode="none"
         >
-          <Heading color="white" fontSize="82">🔥</Heading>
+          <Heading color="white" fontSize="82">
+            🔥
+          </Heading>
         </MovingComponent>
       </Box>
     </VStack>

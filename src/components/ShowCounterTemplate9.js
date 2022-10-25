@@ -1,20 +1,14 @@
 import React from 'react';
 import { MovingComponent } from 'react-moving-text';
 import {
-  ChakraProvider,
   Box,
   Center,
-  Divider,
   Heading,
   Image,
-  Text,
   Grid,
   GridItem,
-  Link,
   HStack,
   VStack,
-  Code,
-  theme,
 } from '@chakra-ui/react';
 
 import Img1 from '../assets/template9/background.png';
@@ -90,15 +84,11 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
           <GridItem colSpan={2}>
             <DateTimeDisplay value={days} type={'DAYS'} isDanger={days <= 3} />
           </GridItem>
-          {/* <GridItem colSpan={1} pt={3}>
-            <Heading color="black">:</Heading>
-          </GridItem> */}
+
           <GridItem colSpan={2}>
             <DateTimeDisplay value={hours} type={'HOURS'} isDanger={false} />
           </GridItem>
-          {/* <GridItem colSpan={1} pt={3}>
-            <Heading color="black">:</Heading>
-          </GridItem> */}
+
           <GridItem colSpan={2}>
             <DateTimeDisplay
               value={minutes}
@@ -106,9 +96,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
               isDanger={false}
             />
           </GridItem>
-          {/* <GridItem colSpan={1} pt={3}>
-            <Heading color="black">:</Heading>
-          </GridItem> */}
+
           <GridItem colSpan={2}>
             <DateTimeDisplay
               value={seconds}
