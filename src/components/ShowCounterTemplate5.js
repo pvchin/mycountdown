@@ -39,7 +39,7 @@ const DateTimeDisplay = ({ value, type, isDanger }) => {
 
 const ShowCounter = ({ days, hours, minutes, seconds }) => {
   return (
-    <VStack backgroundImage={Img1} backgroundSize="cover" minW="800" minH="800">
+    <VStack backgroundImage={Img1} backgroundSize="cover" minW="900" minH="800">
       <Box position="absolute" top="300" left="500">
         <MovingComponent
           type="popOut"
