@@ -36,8 +36,8 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
   const Letters1 = ['C', 'O', 'M', 'I', 'N', 'G'];
   const Letters2 = ['S', 'O', 'O', 'N'];
   return (
-    <VStack backgroundImage={Img1} minW="800" minH="600">
-      <Box position="absolute" top="180" left="450">
+    <Box position="relative" backgroundImage={Img1} h="800px" w="800px">
+      <Box position="relative" top="85" left="170">
         <MovingComponent
           type="flash"
           duration="1000ms"
@@ -50,10 +50,10 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
           <Image src={Img3} w={500} />
         </MovingComponent>
       </Box>
-      <Box position="absolute" top="100" left="630">
+      <Box position="absolute" top="0" left="350">
         <Image src={Img2} w={150} />
       </Box>
-      <Box position="absolute" top={340}>
+      <Box position="absolute" top={340} left="270">
         <HStack>
           {Letters1.map((letter, index) => (
             <MovingComponent
@@ -91,7 +91,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
           ))}
         </HStack>
       </Box>
-      <HStack top={550} position="absolute">
+      <HStack top={20} left={20} position="relative">
         <Grid templateColumns="repeat(11, 1fr)" gap={0} pl={14} mt={2}>
           <GridItem colSpan={2}>
             <DateTimeDisplay value={days} type={'DAYS'} isDanger={days <= 3} />
@@ -124,7 +124,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
           </GridItem>
         </Grid>
       </HStack>
-    </VStack>
+    </Box>
   );
 };
 
