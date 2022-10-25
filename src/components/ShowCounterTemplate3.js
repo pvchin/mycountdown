@@ -61,7 +61,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
           </Text>
         </MovingComponent>
       </Box>
-      <Box position="absolute" top="320" left="480">
+      <Box position="relative" top="320" left="50">
         <MovingComponent
           type="zoomOut"
           duration="1000ms"

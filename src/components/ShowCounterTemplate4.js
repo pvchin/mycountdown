@@ -54,7 +54,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
           <Image src={Img2} w={650} opacity={0.3} />
         </MovingComponent>
       </Box>
-      <Box position="absolute" top="240" left="500">
+      <Box position="relative" top="40" left="0">
         <MovingComponent
           type="shakeMix"
           duration="1000ms"
